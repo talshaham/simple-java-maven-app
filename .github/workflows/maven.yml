@@ -50,11 +50,11 @@ jobs:
           aws-region: eu-north-1  
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v2
 
       - name: terraform init
         run: terraform init
 
       - name: terraform apply
-        run: terraform apply
+        run: terraform apply -auto-approve
       
