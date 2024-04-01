@@ -25,5 +25,14 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - run: docker build -t maven-hello .
+      - name: create docker image of maven
+        run: docker build -t maven-hello .
+      - name: run maven image  
       - run: docker run maven-hello
+
+      - name: tag image of docker
+        run: docker tag maven-hello:latest talshaham/maven-app:2
+
+      - name: 
+        
+      
