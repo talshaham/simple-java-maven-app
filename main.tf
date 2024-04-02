@@ -6,6 +6,13 @@ terraform {
     }
   }
   required_version = ">= 1.2.0"
+
+  backend "s3" {
+  bucket = "maven-app"
+  key    = "StateFile"
+  region = "eu-north-1"
+  encrypt = true
+
 }
 
 provider "aws" {
