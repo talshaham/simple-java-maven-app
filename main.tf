@@ -26,7 +26,7 @@ data "aws_vpc" "default" {
 resource "aws_instance" "aws_maven-app" {
   ami           = "ami-0914547665e6a707c"
   instance_type = "t3.micro"
-  vpc_security_group_ids      = [aws_security_group.maven-app_sg.id]
+  vpc_security_group_ids      = [aws_security_group.maven-app_sg2.id]
   key_name = "key_pair1"
   tags = {
     Name = "maven-app"
@@ -37,8 +37,8 @@ resource "aws_instance" "aws_maven-app" {
 
 
 
-resource "aws_security_group" "maven-app_sg" {
- name        = "maven-app-sg"
+resource "aws_security_group" "maven-app_sg2" {
+ name        = "maven-app-sg2"
  description = "elk stack security group"
  vpc_id      = "vpc-05b62589856924a60"
 
