@@ -25,23 +25,22 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - name: create docker image of maven
-        run: docker build -t maven-hello .
-      - name: run maven image  
-        run: docker run maven-hello
-
-      - name: tag image of docker
-        run: docker tag maven-hello:latest talshaham/maven-app:3
 
       - name: login to dockerhub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }} 
-
-      - name: push image to dockerhub
-        run: docker push talshaham/maven-app:3
-
+      
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          build-args: VERSION=${{github.run_number}}
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/maven-app:${{github.run_number}} , ${{ secrets.DOCKER_USERNAME }}/maven-app:latest
+        
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
