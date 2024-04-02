@@ -12,9 +12,8 @@ terraform {
   key    = "StateFile"
   region = "eu-north-1"
   encrypt = true
-
+   }
 }
-
 provider "aws" {
   region = "eu-north-1"
 }
