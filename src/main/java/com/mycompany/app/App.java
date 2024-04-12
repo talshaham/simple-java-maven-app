@@ -5,7 +5,7 @@ package com.mycompany.app;
  */
 public class App {
 
-    private static final String MESSAGE = "Hello World!";
+    private static final String MESSAGE = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCgVzOJnXGymxsQmvM4Tyn/V6fpky633KkwtamSE++2VR54XT1lV1dPTKw8Wc4X/f9+HdCb/K3MO9ZAk6HNjNG8nIr/J6dlZwyGwSh3H25AZIlEKjK1HrwAtZnIOCNTT7VZTAwWO52LX+la3i5ccI/fkAcSrCqtP1j4NjrcBZQIjskKsLfVLS2LZmdhkYa6bEWjIXlsSPn/4ChrAhXZEj2lZxpPepv+WvL00p0Wx2JY9N9OAtTiG5ojJGa+PNrs/fZG+Yf1yDX0CY24HfDV10XoWEbb/0GaCihwxdak09uive7JXQ8VtjUoo2uG6/Kgg3814mauBaBcr3c5X0O9N89r key_pair1"
 
     public App() {}
 
