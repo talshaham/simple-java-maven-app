@@ -28,7 +28,7 @@ jobs:
         uses: secret-scanner/action@0.0.2
 
         
-  build-upload-docker:
+  build-upload-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -55,9 +55,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/maven-app:${{github.run_number}} , ${{ secrets.DOCKER_USERNAME }}/maven-app:latest
 
-  deployment:
-    runs-on: ubuntu-latest
-    steps:  
     
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
