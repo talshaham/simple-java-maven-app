@@ -27,8 +27,10 @@ jobs:
       - name: Secret Scanner
         uses: secret-scanner/action@0.0.2
         
-  build-upload-deploy:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -45,7 +47,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }} 
       
-      - name: Build artifact and push
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -53,8 +55,7 @@ jobs:
           build-args: VERSION=${{github.run_number}}
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/maven-app:${{github.run_number}} , ${{ secrets.DOCKER_USERNAME }}/maven-app:latest
-
-    
+        
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@v4.0.2
         with:
@@ -72,3 +73,4 @@ jobs:
 
       - name: terraform apply
         run: terraform apply -auto-approve
+
